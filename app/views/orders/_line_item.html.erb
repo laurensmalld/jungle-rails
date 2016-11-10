@@ -1,0 +1,20 @@
+<article class="product">
+  <header>
+    <%= link_to product do %>
+      <%= image_tag product.image.thumb, alt: product.name %>
+      <h4><%= product.name %></h4>
+    <% end %>
+  </header>
+  <p class="description">
+    <%= product.description %>
+  </p>
+  <p>Quantity:  <%= line_item.quantity %> </p>
+   <p>Sub-total: <%= humanized_money_with_symbol line_item.price x line_item.quantity %> </p>
+    <% end %>
+  <footer class="actions">
+  <p>Total Order Amount: sum of all sub-totals
+  <p>Email used: <%= user.email %></p>
+
+  </footer>
+
+</article>
