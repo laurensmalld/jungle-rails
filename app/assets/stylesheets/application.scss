@@ -10,3 +10,16 @@
 body {
   padding-top: 70px;
 }
+
+.empty-cart {
+  border:        1px solid #ccc;
+  border-radius: 5px;
+  padding:       15px;
+  background-color: #d3d3d3;
+  margin:  auto;
+  width: 75%
+}
+
+.empty-cart h3 {
+  color: #FFA500;
+}
