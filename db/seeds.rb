@@ -129,5 +129,23 @@ cat3.products.create!({
   price: 2_483.75
 })
 
+## REVIEWS
+
+puts "Seeding some reviews ..."
+
+prod1 = Product.find_or_create_by! name: 'Hipster Hat'
+prod2 = Product.find_or_create_by! name: 'Hipster Socks'
+
+
+prod1.reviews.create!({
+  description: 'Test 123',
+  rating: 3
+})
+
+prod2.reviews.create!({
+  description: 'Test ABC',
+  rating: 1
+})
+
 
 puts "DONE!"

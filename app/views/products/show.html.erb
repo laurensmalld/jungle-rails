@@ -9,7 +9,7 @@
     <div class="row">
 
       <div class="col-sm-4">
-        <%= image_tag @product.image.url, class: 'main-img' %>
+        <%= image_tag @product.image.url, class: 'main-img'%>
       </div>
 
       <div class="col-sm-8">
@@ -24,6 +24,19 @@
           <dd><%= @product.price %></dd>
         </dl>
       </div>
+    <div style="margin: 15px; background-color: #d3d3d3; padding: 5px; width: 25%; border-radius: 10px; float: right;">
+    <h5>Leave a review and rating:</h5>
+    <%= form_for [@product, @review] do |f| %>
+      <%= f.text_area :description %>
+      <%= f.select :rating, [1, 2, 3, 4, 5] %>
+      <%= f.submit "Submit", class: "btn btn-primary" %>
+    <% end %>
+    </div>
+
+    <div>
+    <%= render 'review' %>
+    </div>
+
     </div>
 
   </article>

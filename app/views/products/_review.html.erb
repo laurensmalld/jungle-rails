@@ -1,0 +1,6 @@
+<dl>
+<% @product.reviews.each do |rev| %>
+  <dt>Customer review: </dt><dd><%= rev.description %></dd>
+  <dt>Customer rating: </dt><dd><%= rev.rating %></dd>
+</dl>
+<% end %>
