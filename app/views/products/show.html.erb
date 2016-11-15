@@ -23,20 +23,28 @@
           <dt>Price</dt>
           <dd><%= @product.price %></dd>
         </dl>
-      </div>
-    <div style="margin: 15px; background-color: #d3d3d3; padding: 5px; width: 25%; border-radius: 10px; float: right;">
+    </div>
+
+    <div class="col-sm-8">
+    <div>
+    <% if !@average.blank? %>
+    <div style="text-align: center;">
+    <h5>Average User Rating: <%= @average %></h5>
+    </div>
+    <% end %>
+    </div>
+    <% if current_user.present? %>
+    <div class="col-sm-4" style="width: 75%; text-align: center; background-color: #e8e8ee;">
     <h5>Leave a review and rating:</h5>
     <%= form_for [@product, @review] do |f| %>
       <%= f.text_area :description %>
       <%= f.select :rating, [1, 2, 3, 4, 5] %>
       <%= f.submit "Submit", class: "btn btn-primary" %>
     <% end %>
-    </div>
-
-    <div>
+    <% end %>
     <%= render 'review' %>
     </div>
-
+    </div>
     </div>
 
   </article>
