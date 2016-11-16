@@ -1,13 +1,13 @@
 class UserMailer < ApplicationMailer
     default from: 'no-reply@jungle.com'
 
-  def order_conf_email(order)
+  def order_email(order)
     @user = user
-    @line_item = line_item
+    @line_items = @order.line_items
     @order = order_id
     @url  = 'http://localhost:3000'
     mail(to: @user.email,
-          subject: 'Order Confirmation: #{@line_item.order_id}'
+          subject: 'Jungle Order Confirmation: #{@order}'
           template_path: 'views/user_mailer'
           template_name: 'order_email')
   end

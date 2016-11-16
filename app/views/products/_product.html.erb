@@ -7,7 +7,13 @@
   </header>
   <p class="description">
     <%= product.description %>
+    <br>
+      <% @average = product.reviews.average(:rating) %>
+      <% if !@average.blank? %>
+      <h5>Average User Rating: <%= @average %> / 5</h5>
+      <% end %>
   </p>
+
   <footer class="actions">
     <%= link_to add_item_cart_path(product_id: product.id), class: 'btn btn-primary', method: :put do %>
       <%= fa_icon "shopping-cart", text: 'Add' %>

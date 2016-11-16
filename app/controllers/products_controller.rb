@@ -7,7 +7,6 @@ class ProductsController < ApplicationController
   def show
     @product = Product.find params[:id]
     @review = @product.reviews.new()
-    @average = @product.reviews.average(:rating).round(1)
   end
 end
 

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+  </head>
+  <body>
+    <h1>Thanks you for your recent Jungle order, <%= @user.name %></h1>
+    <p>
+      Your order has been successfully placed!
+      Please see below for a reminder of your order details:<br>
+    </p>
+    <div>
+    <tbody>
+      <% @line_items.each do |line_item| %>
+        <tr>
+          <td>
+        <h4><%= line_item.product.name %></h4>
+       <br>
+       <p><%= line_item.product.description %></p>
+        </td>
+       <td>
+        <%= number_to_currency(line_item.product.price_cents / 100) %>
+        </td>
+        <td>
+        <%= line_item.quantity %>
+        </td>
+        <td>
+        <% total = number_to_currency(line_item.item_price_cents / 100 * line_item.quantity) %>
+        <%= total %>
+        </td>
+      <% end %>
+      </tbody>
+      <tfoot>
+        <tr>
+          <th>
+            TOTAL:
+          </th>
+          <th>
+       <% total_sales = @line_items.map do |item| %>
+        <% item.item_price_cents / 100 * item.quantity %>
+        <% end %>
+        <%= number_to_currency(total_sales.sum) %>
+          </th>
+        </tr>
+      </tfoot>
+    </div>
+    <p>Thanks again and have a great day!</p>
+  </body>
+</html>

@@ -1,7 +1,6 @@
-<% if @cart.nil? %>
+<% if @cart.length == 0 %>
   <%= render 'empty_cart' %>
 <% else %>
-
 <section class="cart-show">
 
   <header class="page-header">
@@ -30,7 +29,7 @@
             TOTAL:
           </th>
           <th>
-            <%= @cart_total %>
+            <%= number_to_currency(@cart_total) %>
           </th>
         </tr>
       </tfoot>
@@ -53,6 +52,6 @@
       <% end %>
     </div>
   </div>
-
 </section>
 <% end %>
+
