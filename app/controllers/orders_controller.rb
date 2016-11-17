@@ -58,6 +58,7 @@ class OrdersController < ApplicationController
       end
     end
     order.save!
+    UserMailer.order_email(order).deliver_now
     order
   end
 
@@ -71,12 +72,4 @@ class OrdersController < ApplicationController
     end
     total
   end
-
-  def create
-    order = Order.new(params[:order_id])
-
-    if order.save
-    UserMailer.order_email(order).deliver_now
-  end
-
 end
